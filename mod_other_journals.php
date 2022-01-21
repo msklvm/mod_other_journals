@@ -27,9 +27,38 @@
 		} else {
 			$uri = $uri.'/ru';
 		}
-
+if ($journal_host == 'vestnik.tspu.edu.ru') {
+    $journal_replace = $journals[0];
+    $journals[0] = $journals[4];
+    $journals[4] = $journal_replace;
+} elseif ($journal_host == 'edujournal.tspu.edu.ru'){
+    $journal_replace = $journals[0];
+    $journals[0] = $journals[3];
+    $journals[3] = $journal_replace;
+} elseif ($journal_host == 'npo.tspu.edu.ru') {
+    $journal_replace = $journals[0];
+    $journals[0] = $journals[3];
+    $journals[3] = $journal_replace;
+    $journal_replace = $journals[2];
+    $journals[2] = $journals[4];
+    $journals[4] = $journal_replace;
+} elseif ($journal_host == 'ling.tspu.edu.ru') {
+    $journal_replace = $journals[1];
+    $journals[1] = $journals[3];
+    $journals[3] = $journal_replace;
+    $journal_replace = $journals[2];
+    $journals[2] = $journals[4];
+    $journals[4] = $journal_replace;
+} elseif ($journal_host == 'praxema.tspu.edu.ru') {
+    $journal_replace = $journals[0];
+    $journals[0] = $journals[3];
+    $journals[3] = $journal_replace;
+    $journal_replace = $journals[1];
+    $journals[1] = $journals[4];
+    $journals[4] = $journal_replace;
+}
 	foreach ($journals as $journal) {
-		sprintf('<div class="tile thumb"><a href="http://%s/" target="_blank" title="%s"><img src="images/stories/%s/issue.png"></a></div>',
+		printf('<div class="tile thumb"><a href="http://%s/" target="_blank" title="%s"><img src="images/stories/%s/issue.png"></a></div>',
 			str_replace($currentJournalDomain, $journal['domain'], $uri),
 			$journal['name_'.$lang],
 			$journal['domain']);
